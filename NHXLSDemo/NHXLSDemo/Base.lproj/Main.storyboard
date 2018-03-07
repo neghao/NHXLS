@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9BZ-61-tHA"/>
+                        <viewControllerLayoutGuide type="bottom" id="sYw-Iv-Y1P"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lpa-oA-cEW">
+                                <rect key="frame" x="0.0" y="622" width="185" height="45"/>
+                                <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="Voa-MM-2eh"/>
+                                </constraints>
+                                <state key="normal" title="生成xls"/>
+                                <connections>
+                                    <action selector="addXLS:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BJo-QP-FI5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Bq-uT-kze">
+                                <rect key="frame" x="190" y="622" width="185" height="45"/>
+                                <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="删除xls"/>
+                                <connections>
+                                    <action selector="deleteXLS:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Azy-lf-FED"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="7Bq-uT-kze" firstAttribute="width" secondItem="lpa-oA-cEW" secondAttribute="width" id="0L4-Q1-4dL"/>
+                            <constraint firstItem="lpa-oA-cEW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="5eT-wW-eK1"/>
+                            <constraint firstItem="7Bq-uT-kze" firstAttribute="height" secondItem="lpa-oA-cEW" secondAttribute="height" id="Haf-MA-bTj"/>
+                            <constraint firstItem="7Bq-uT-kze" firstAttribute="leading" secondItem="lpa-oA-cEW" secondAttribute="trailing" constant="5" id="Iws-wK-zOg"/>
+                            <constraint firstAttribute="trailing" secondItem="7Bq-uT-kze" secondAttribute="trailing" id="Jzj-cz-b1D"/>
+                            <constraint firstItem="sYw-Iv-Y1P" firstAttribute="top" secondItem="lpa-oA-cEW" secondAttribute="bottom" id="X7h-Sa-AOg"/>
+                            <constraint firstItem="sYw-Iv-Y1P" firstAttribute="top" secondItem="7Bq-uT-kze" secondAttribute="bottom" id="hu9-iL-GmR"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
