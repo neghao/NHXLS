@@ -7,6 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NHFileManager.h"
+
+
+@class NHFileModel;
 
 @interface NHXLS : NSObject
 
@@ -23,12 +27,12 @@
 /**
  文件保存路径，默认在`Documents`目录下
  */
-@property (nonatomic, copy)NSString *xlsFilePath;
+@property (nonatomic, copy, readonly)NSString *xlsFilePath;
 
 /**
  xlf文件名,不传则以当前时间戳为文件名
  */
-@property (nonatomic, copy)NSString *xlsFileName;
+@property (nonatomic, copy, readonly)NSString *xlsFileName;
 
 
 /**
@@ -36,15 +40,15 @@
 
  @param tableTitles 每一个元素即为单元格标题
  @param tableContents 每一个元素即为单元格内容
- @param filePath 保存路径
+ @param searchPath 保存路径
  @param fileName xlf文件名,不传则以当前时间戳为文件名
  @param operateComplete 操作完成
  */
 + (NHXLS *)createXLSWithTableTitles:(NSArray *)tableTitles
                       tableContents:(NSArray *)tableContents
-                           filePath:(NSString *)filePath
+                         searchPath:(NSSearchPathDirectory)searchPath
                            fileName:(NSString *)fileName
-                    operateComplete:(void(^)(BOOL saveSuccess, NSString *xlsFilePath, NSError* error))operateComplete;
+                    operateComplete:(void(^)(BOOL saveSuccess, NHFileModel *model))operateComplete;
 
 
 /**

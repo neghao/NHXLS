@@ -53,12 +53,12 @@
 
     _nhXls = [NHXLS createXLSWithTableTitles:titles.copy
                                tableContents:contents.copy
-                                    filePath:nil
+                                    searchPath:NSDocumentDirectory
                                     fileName:nil
-                             operateComplete:^(BOOL saveSuccess, NSString *xlsFilePath, NSError *error) {
+                             operateComplete:^(BOOL saveSuccess, NHFileModel *model) {
         
-        _filePath  = xlsFilePath;
-        NSLog(@"生成结果：%d---%@---%@",saveSuccess,xlsFilePath,error.localizedDescription);
+        _filePath  = model.savePath;
+        NSLog(@"生成结果：%d---%@",saveSuccess,model.savePath);
     }];
 
 }
