@@ -31,9 +31,10 @@
  @return 成功则返回 NHFileModel ，否则为空
  */
 - (NHFileModel *)createFileAtPath:(NSSearchPathDirectory)path
-                fileName:(NSString *)fileName
-               extension:(NSString *)extension
-                contents:(nullable NSData *)data;
+                         fileName:(NSString *)fileName
+                        extension:(NSString *)extension
+                         contents:(nullable NSData *)data;
+
 
 
 /**
@@ -48,6 +49,15 @@
                   fileName:(NSString *)fileName
                  extension:(NSString *)extension
                 completion:(void (^_Nullable)(NHFileModel *fileModel, NSError *error))completion;
+
+- (void)loadFileWithFileModel:(NHFileModel *)fileModel
+                   completion:(void (^)(NHFileModel *fileModel, NSError *error))completion;
+
+- (BOOL)removeAllXLSFiles;
+
+- (BOOL)removeXLSFileWithFilePath:(NSSearchPathDirectory)path fileName:(NSString *)fileName;
+
+
 
 @end
 

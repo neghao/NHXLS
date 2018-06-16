@@ -10,14 +10,27 @@
 
 @implementation NHFileModel
 
+- (NSData *)data {
+    
+    if (_data) {
+        return _data;
+    }
+    
+    if (_savePath) {
+        return [[NSData alloc] initWithContentsOfFile:_savePath];
+    }
+    
+    return [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:_savePath]];
+}
+
 @end
 
 
 @implementation NHFileManager
 
 NSString *getDirectoryPath(NSSearchPathDirectory path, NSString *fileName,NSString *extension) {
-
-         NSString *directory = nil;
+    
+    NSString *directory = nil;
     if (path == NSDocumentDirectory) {
         directory = @"Documents";
     } else if (path == NSLibraryDirectory) {
@@ -26,18 +39,21 @@ NSString *getDirectoryPath(NSSearchPathDirectory path, NSString *fileName,NSStri
         directory = @"Caches";
     }
     
-    NSString *suffixPath = [NSString stringWithFormat:@"/%@/%@%@",directory,fileName,extension];
+    NSString *suffixPath = [NSString stringWithFormat:@"/%@/",directory];
+    if (fileName && extension) {
+         suffixPath = [NSString stringWithFormat:@"/%@/%@%@",directory,fileName,extension];
+    }
     
     NSString *savePath = [NSHomeDirectory() stringByAppendingPathComponent:suffixPath];
     
 #if TARGET_IPHONE_SIMULATOR  //模拟器
-    char *username = getlogin();
-    savePath = [NSString stringWithFormat:@"/Users/%s/Desktop/xls/%@%@",username,fileName,extension];
+//    char *username = getlogin();
+//    savePath = [NSString stringWithFormat:@"/Users/%s/Desktop/xls/%@%@",username,fileName,extension];
+    NSLog(@"模拟器");
 #endif
     
     return savePath;
 }
-
 
 - (NHFileModel *)createFileAtPath:(NSSearchPathDirectory)path
                          fileName:(NSString *)fileName
@@ -46,17 +62,24 @@ NSString *getDirectoryPath(NSSearchPathDirectory path, NSString *fileName,NSStri
     
     NSFileManager *fileManager = [[NSFileManager alloc] init];
     
-    NSString *savePath = getDirectoryPath(path,fileName,extension);
+    NSString *savePath = getDirectoryPath(path, fileName,extension);
     
-    BOOL saveSuccess = [fileManager createFileAtPath:savePath contents:data attributes:nil];
+    if (data) {
+        [fileManager createFileAtPath:savePath contents:data attributes:nil];
+    } else {
+#if TARGET_IPHONE_SIMULATOR  //模拟器
+//        [fileManager createFileAtPath:savePath contents:data attributes:nil];
+#endif
+    }
     
     NHFileModel *fileModel;
     
-    if (saveSuccess) {
+    if (savePath) {
         fileModel = [[NHFileModel alloc] init];
-        fileModel.url = [NSURL URLWithString:savePath];
+        fileModel.url = [NSURL fileURLWithPath:savePath isDirectory:YES];;
         fileModel.data = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:savePath]];
         fileModel.name = fileName;
+        fileModel.savePath = savePath;
         fileModel.extension = extension;
     }
     
@@ -86,6 +109,57 @@ NSString *getDirectoryPath(NSSearchPathDirectory path, NSString *fileName,NSStri
     if (completion) {
         completion(fileModel, loadError);
     }
+}
+
+- (void)loadFileWithFileModel:(NHFileModel *)fileModel completion:(void (^)(NHFileModel *, NSError *))completion {
+    
+}
+
+- (BOOL)removeAllXLSFiles {
+    
+    NSString *suffixPath = [NSString stringWithFormat:@"/Documents"];
+    NSString *savePath = [NSHomeDirectory() stringByAppendingPathComponent:suffixPath];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSDirectoryEnumerator *direnum = [fileManager enumeratorAtPath:savePath];
+    NSError *error;
+    
+    while ([direnum nextObject]) {
+        @autoreleasepool {
+            NSString *filename = [direnum nextObject];
+            if ([[filename pathExtension] isEqualToString:@"xls"]) {
+                NSString *filePath = [NSString stringWithFormat:@"%@/%@",savePath,filename];
+                [fileManager removeItemAtPath:filePath error:&error];
+            }
+        }
+    }
+    
+    if (error) {
+        return NO;
+    }
+    
+    return YES;
+}
+
+- (BOOL)removeXLSFileWithFilePath:(NSSearchPathDirectory)path fileName:(NSString *)fileName {
+    
+    NSString *directory = nil;
+    if (path == NSDocumentDirectory) {
+        directory = @"Documents";
+    } else if (path == NSLibraryDirectory) {
+        directory = @"Library";
+    } else if (path == NSCachesDirectory) {
+        directory = @"Caches";
+    }
+    
+    NSString *suffixPath = [NSString stringWithFormat:@"/%@/%@",directory,fileName];
+    NSString *savePath = [NSHomeDirectory() stringByAppendingPathComponent:suffixPath];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSError *error;
+    BOOL result = [fileManager removeItemAtPath:savePath error:&error];
+    
+    return result;
 }
 
 

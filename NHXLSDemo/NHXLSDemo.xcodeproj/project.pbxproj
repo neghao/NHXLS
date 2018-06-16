@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A931E4620D5139F004C3BC8 /* NHSystemShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A931E4520D5139F004C3BC8 /* NHSystemShare.m */; };
+		0A931E5720D5260B004C3BC8 /* libDHxls.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A931E4820D5260A004C3BC8 /* libDHxls.a */; };
 		28C29EDF204FB97A00A0F69A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C29EDE204FB97A00A0F69A /* AppDelegate.m */; };
 		28C29EE2204FB97A00A0F69A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C29EE1204FB97A00A0F69A /* ViewController.m */; };
 		28C29EE5204FB97A00A0F69A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28C29EE3204FB97A00A0F69A /* Main.storyboard */; };
@@ -16,7 +18,6 @@
 		28C29EF7204FB97A00A0F69A /* NHXLSDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C29EF6204FB97A00A0F69A /* NHXLSDemoTests.m */; };
 		28C29F02204FB97A00A0F69A /* NHXLSDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C29F01204FB97A00A0F69A /* NHXLSDemoUITests.m */; };
 		28C29F12204FB9B500A0F69A /* NHXLS.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C29F11204FB9B500A0F69A /* NHXLS.m */; };
-		8063ED3920AD71C900CED72D /* libDHxls.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8063ED3820AD71C800CED72D /* libDHxls.a */; };
 		8063ED4B20AD77D400CED72D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8063ED4A20AD77D400CED72D /* CoreGraphics.framework */; };
 		8063ED4D20AD7AE800CED72D /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8063ED4C20AD7AE800CED72D /* libc++.tbd */; };
 		8063ED6620AD8EBD00CED72D /* NHFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8063ED6520AD8EBD00CED72D /* NHFileManager.m */; };
@@ -40,6 +41,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A931E4420D5139F004C3BC8 /* NHSystemShare.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NHSystemShare.h; sourceTree = "<group>"; };
+		0A931E4520D5139F004C3BC8 /* NHSystemShare.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NHSystemShare.m; sourceTree = "<group>"; };
+		0A931E4820D5260A004C3BC8 /* libDHxls.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libDHxls.a; sourceTree = "<group>"; };
+		0A931E4E20D5260A004C3BC8 /* DHWorkBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHWorkBook.h; sourceTree = "<group>"; };
+		0A931E4F20D5260A004C3BC8 /* DHRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHRange.h; sourceTree = "<group>"; };
+		0A931E5020D5260A004C3BC8 /* xlstypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xlstypes.h; sourceTree = "<group>"; };
+		0A931E5120D5260A004C3BC8 /* xlslib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xlslib.h; sourceTree = "<group>"; };
+		0A931E5220D5260A004C3BC8 /* DHCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHCell.h; sourceTree = "<group>"; };
+		0A931E5320D5260A004C3BC8 /* DHFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHFormat.h; sourceTree = "<group>"; };
+		0A931E5420D5260A004C3BC8 /* DHExtendedFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHExtendedFormat.h; sourceTree = "<group>"; };
+		0A931E5520D5260A004C3BC8 /* DHWorkSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHWorkSheet.h; sourceTree = "<group>"; };
+		0A931E5620D5260A004C3BC8 /* DHFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHFont.h; sourceTree = "<group>"; };
 		28C29EDA204FB97A00A0F69A /* NHXLSDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NHXLSDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28C29EDD204FB97A00A0F69A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		28C29EDE204FB97A00A0F69A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -58,18 +71,8 @@
 		28C29F03204FB97A00A0F69A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28C29F10204FB9B500A0F69A /* NHXLS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NHXLS.h; sourceTree = "<group>"; };
 		28C29F11204FB9B500A0F69A /* NHXLS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NHXLS.m; sourceTree = "<group>"; };
-		8063ED3820AD71C800CED72D /* libDHxls.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libDHxls.a; sourceTree = "<group>"; };
 		8063ED4A20AD77D400CED72D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		8063ED4C20AD7AE800CED72D /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
-		8063ED4F20AD7DD400CED72D /* DHCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHCell.h; sourceTree = "<group>"; };
-		8063ED5020AD7DD400CED72D /* DHExtendedFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHExtendedFormat.h; sourceTree = "<group>"; };
-		8063ED5120AD7DD400CED72D /* DHFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHFont.h; sourceTree = "<group>"; };
-		8063ED5220AD7DD400CED72D /* DHFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHFormat.h; sourceTree = "<group>"; };
-		8063ED5320AD7DD400CED72D /* DHRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHRange.h; sourceTree = "<group>"; };
-		8063ED5420AD7DD400CED72D /* DHWorkBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHWorkBook.h; sourceTree = "<group>"; };
-		8063ED5520AD7DD400CED72D /* DHWorkSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHWorkSheet.h; sourceTree = "<group>"; };
-		8063ED5620AD7DD400CED72D /* xlslib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xlslib.h; sourceTree = "<group>"; };
-		8063ED6320AD803200CED72D /* xlstypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xlstypes.h; sourceTree = "<group>"; };
 		8063ED6420AD8EBD00CED72D /* NHFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NHFileManager.h; sourceTree = "<group>"; };
 		8063ED6520AD8EBD00CED72D /* NHFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NHFileManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,7 +84,7 @@
 			files = (
 				8063ED4D20AD7AE800CED72D /* libc++.tbd in Frameworks */,
 				8063ED4B20AD77D400CED72D /* CoreGraphics.framework in Frameworks */,
-				8063ED3920AD71C900CED72D /* libDHxls.a in Frameworks */,
+				0A931E5720D5260B004C3BC8 /* libDHxls.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +105,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A931E4720D5260A004C3BC8 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				0A931E4820D5260A004C3BC8 /* libDHxls.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		0A931E4D20D5260A004C3BC8 /* inc */ = {
+			isa = PBXGroup;
+			children = (
+				0A931E4E20D5260A004C3BC8 /* DHWorkBook.h */,
+				0A931E4F20D5260A004C3BC8 /* DHRange.h */,
+				0A931E5020D5260A004C3BC8 /* xlstypes.h */,
+				0A931E5120D5260A004C3BC8 /* xlslib.h */,
+				0A931E5220D5260A004C3BC8 /* DHCell.h */,
+				0A931E5320D5260A004C3BC8 /* DHFormat.h */,
+				0A931E5420D5260A004C3BC8 /* DHExtendedFormat.h */,
+				0A931E5520D5260A004C3BC8 /* DHWorkSheet.h */,
+				0A931E5620D5260A004C3BC8 /* DHFont.h */,
+			);
+			name = inc;
+			path = DHxls;
+			sourceTree = "<group>";
+		};
 		28C29ED1204FB97A00A0F69A = {
 			isa = PBXGroup;
 			children = (
@@ -161,12 +189,14 @@
 		28C29F0F204FB99500A0F69A /* NHXLS */ = {
 			isa = PBXGroup;
 			children = (
-				8063ED4E20AD7DD400CED72D /* DHxls */,
-				8063ED3820AD71C800CED72D /* libDHxls.a */,
+				0A931E4D20D5260A004C3BC8 /* inc */,
+				0A931E4720D5260A004C3BC8 /* lib */,
 				28C29F10204FB9B500A0F69A /* NHXLS.h */,
 				28C29F11204FB9B500A0F69A /* NHXLS.m */,
 				8063ED6420AD8EBD00CED72D /* NHFileManager.h */,
 				8063ED6520AD8EBD00CED72D /* NHFileManager.m */,
+				0A931E4420D5139F004C3BC8 /* NHSystemShare.h */,
+				0A931E4520D5139F004C3BC8 /* NHSystemShare.m */,
 			);
 			name = NHXLS;
 			path = ../NHXLS;
@@ -179,22 +209,6 @@
 				8063ED4A20AD77D400CED72D /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		8063ED4E20AD7DD400CED72D /* DHxls */ = {
-			isa = PBXGroup;
-			children = (
-				8063ED4F20AD7DD400CED72D /* DHCell.h */,
-				8063ED5020AD7DD400CED72D /* DHExtendedFormat.h */,
-				8063ED5120AD7DD400CED72D /* DHFont.h */,
-				8063ED5220AD7DD400CED72D /* DHFormat.h */,
-				8063ED5320AD7DD400CED72D /* DHRange.h */,
-				8063ED5420AD7DD400CED72D /* DHWorkBook.h */,
-				8063ED5520AD7DD400CED72D /* DHWorkSheet.h */,
-				8063ED5620AD7DD400CED72D /* xlslib.h */,
-				8063ED6320AD803200CED72D /* xlstypes.h */,
-			);
-			path = DHxls;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,6 +348,7 @@
 				28C29EED204FB97A00A0F69A /* main.m in Sources */,
 				28C29EDF204FB97A00A0F69A /* AppDelegate.m in Sources */,
 				28C29F12204FB9B500A0F69A /* NHXLS.m in Sources */,
+				0A931E4620D5139F004C3BC8 /* NHSystemShare.m in Sources */,
 				8063ED6620AD8EBD00CED72D /* NHFileManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -500,11 +515,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 69U78V53ZN;
+				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/../NHXLS/";
 				INFOPLIST_FILE = NHXLSDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../NHXLS/";
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../NHXLS/lib";
 				PRODUCT_BUNDLE_IDENTIFIER = neghao.studio.NHXLSDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -518,11 +534,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 69U78V53ZN;
+				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/../NHXLS/";
 				INFOPLIST_FILE = NHXLSDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../NHXLS/";
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../NHXLS/lib";
 				PRODUCT_BUNDLE_IDENTIFIER = neghao.studio.NHXLSDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

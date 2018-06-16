@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "NHFileManager.h"
-
+#import "NHSystemShare.h"
 
 @class NHFileModel;
 
@@ -44,8 +44,7 @@
  @param fileName xlf文件名,不传则以当前时间戳为文件名
  @param operateComplete 操作完成
  */
-+ (NHXLS *)createXLSWithTableTitles:(NSArray *)tableTitles
-                      tableContents:(NSArray *)tableContents
++ (NHXLS *)createXLSWithRowContents:(NSArray <NSArray *>*)tableContents
                          searchPath:(NSSearchPathDirectory)searchPath
                            fileName:(NSString *)fileName
                     operateComplete:(void(^)(BOOL saveSuccess, NHFileModel *model))operateComplete;

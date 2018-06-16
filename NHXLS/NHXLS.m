@@ -14,7 +14,7 @@
 @interface NHXLS ()
 @property (nonatomic, strong) NHFileManager *fileManager;
 @property (nonatomic, copy)NSArray *tableTitles;
-@property (nonatomic, copy)NSArray *tableContents;
+@property (nonatomic, copy)NSArray<NSArray *> *tableContents;
 @property (nonatomic, copy)NSString *xlsFilePath;
 @property (nonatomic, assign) NSSearchPathDirectory searchPath;
 @property (nonatomic, copy)NSString *xlsFileName;
@@ -23,14 +23,12 @@
 
 @implementation NHXLS
 
-+ (NHXLS *)createXLSWithTableTitles:(NSArray *)tableTitles
-                      tableContents:(NSArray *)tableContents
++ (NHXLS *)createXLSWithRowContents:(NSArray <NSArray *>*)tableContents
                          searchPath:(NSSearchPathDirectory)searchPath
                            fileName:(NSString *)fileName
                     operateComplete:(void(^)(BOOL saveSuccess, NHFileModel *model))operateComplete {
     
     NHXLS *xls = [[NHXLS alloc] init];
-    xls.tableTitles = tableTitles;
     xls.tableContents = tableContents;
     xls.searchPath = searchPath;
     xls.operateComplete = operateComplete;
@@ -42,64 +40,79 @@
         xls.xlsFileName = [xls getDateTimeTOMilliSeconds];
     }
     
+//    [xls createXLSFile];
     [xls createXlsLib];
-    
     return xls;
 }
 
-- (NSString *)getSavePath {
-    NSString *suffixPath = [NSString stringWithFormat:@"/Documents/%@.xls",_xlsFileName];
-    NSString *savePath = [NSHomeDirectory() stringByAppendingPathComponent:suffixPath];
-    if (_xlsFilePath == nil) {
-        _xlsFilePath = savePath;
-    }
-    return _xlsFilePath;
-}
+//- (NSString *)getSavePath {
+//    NSString *suffixPath = [NSString stringWithFormat:@"/Documents/%@.xls",_xlsFileName];
+//    NSString *savePath = [NSHomeDirectory() stringByAppendingPathComponent:suffixPath];
+//    if (_xlsFilePath == nil) {
+//        _xlsFilePath = savePath;
+//    }
+//    return _xlsFilePath;
+//}
 
 - (void)createXlsLib {
     
+
     DHCell *cell;
+  
     DHWorkBook *dhWB = [DHWorkBook new];
     DHWorkSheet *dhWS = [dhWB workSheetWithName:_xlsFileName];
-    
+       
     //    [dhWS width:10000 col:0 format:NULL];
-    for(unsigned short idx=0; idx<_tableContents.count; ++idx) {
-        cell = [dhWS label:[NSString stringWithFormat:@"Row %d", idx+1] row:idx col:0];
-        if(idx & 1) {
-            // prove we can get the cell reference later
-//            cell = [dhWS cell:idx col:0];
-        }
-        [cell horzAlign:HALIGN_LEFT];
-//        [cell indent:INDENT_0+idx];
-    }
     //    [dhWS merge:(NSRect){{10, 10}, {3, 3} }];
     //    NSData *now = [NSDate date];
     //    NSDate *then = [NSDate dateWithString:@"1899-01-01 12:00:00 +0000").
-    
-//    for(unsigned short idx=0; idx<10; ++idx) {
-//        [dhWS number:3.1415f row:idx col:1 numberFormat:FMT_GENERAL+idx];
-//    }
-//
-//    [dhWS width:10000 col:2 format:NULL];
-//    for(unsigned short idx=0; idx<7; ++idx) {
-//        cell = [dhWS label:@"Hello World" row:idx col:2];
-//        [cell horzAlign:HALIGN_GENERAL+idx];
-//    }
-//
-//    [dhWS width:0xFFFF col:3 format:NULL];
-//    for(unsigned short idx=0; idx<4; ++idx) {
-//        [dhWS height:24 row:idx format:NULL];
-//        cell = [dhWS label:@"Hello World" row:idx col:3];
-//        [cell vertAlign:VALIGN_TOP+idx];
-//    }
+    //    [dhWS number:3.1415f row:idx col:1 numberFormat:FMT_GENERAL+idx];
     
     
-    int fud = [dhWB writeFile:[self getSavePath]];
+    for(unsigned short idx = 0; idx < _tableContents.count; ++idx) {
+
+        NSArray *rowArr = [_tableContents objectAtIndex:idx];
+
+        for(unsigned short idx2 = 0; idx2 < rowArr.count; ++idx2) {
+
+            NSString *title = [rowArr objectAtIndex:idx2];
+
+            cell = [dhWS label:title row:idx2 col:idx];
+            if(idx2 & 1) {
+                cell = [dhWS cell:idx2 col:idx];
+            }
+
+            [cell vertAlign:VALIGN_CENTER];
+            [cell horzAlign:HALIGN_CENTER];
+            [cell indent:INDENT_0];
+        }
+    }
+
     
-    NSLog(@"OK - bye! fud=%d---%@", fud,NSHomeDirectory());
+    NHFileModel *fileModel = [_fileManager createFileAtPath:NSDocumentDirectory
+                                                   fileName:_xlsFileName
+                                                  extension:@".xls"
+                                                   contents:nil];
+    
+    int fud = [dhWB writeFile:fileModel.savePath];
+
+    NSLog(@"OK - bye! fud=%d---%@", fud,fileModel.savePath);
+    
+    if (_operateComplete) {
+        if (fileModel) {
+            _operateComplete((fud == 0), fileModel);
+        } else {
+            _operateComplete((fud == 0), fileModel);
+        }
+    }
+    
 }
 
 
+
+/**
+ 手机直接生成，微信和QQ上打不开
+ */
 - (void)createXLSFile {
     
     NSMutableArray *xlsContentArr = [[NSMutableArray alloc] init];
