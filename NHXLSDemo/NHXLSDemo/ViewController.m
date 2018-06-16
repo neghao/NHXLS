@@ -34,7 +34,8 @@
 
 - (IBAction)addXLS:(id)sender {
     [_loadingView  startAnimating];
-    [self performSelector:@selector(createXLSFile) withObject:nil afterDelay:5];
+    //这个延迟是装B用的，可以取消
+    [self performSelector:@selector(createXLSFile) withObject:nil afterDelay:0];
 }
 
 - (IBAction)deleteXLS:(id)sender {
@@ -111,7 +112,8 @@
     kWeakSelf(self);
     if (fileModel.url && fileModel.name && fileModel.data) {
         
-    NSArray *items = @[ fileModel.url, fileModel.name, fileModel.data];
+//    NSArray *items = @[ fileModel.url, fileModel.name, fileModel.data];
+        NSArray *items = @[ fileModel.url, fileModel.name ];
 
     NHSystemShare *systemShare = [[NHSystemShare alloc] initWithContentItems:items];
     

@@ -62,29 +62,31 @@
     DHWorkBook *dhWB = [DHWorkBook new];
     DHWorkSheet *dhWS = [dhWB workSheetWithName:_xlsFileName];
        
-    //    [dhWS width:10000 col:0 format:NULL];
-    //    [dhWS merge:(NSRect){{10, 10}, {3, 3} }];
+//        [dhWS merge:(NSRect){{10, 10}, {3, 3} }];
     //    NSData *now = [NSDate date];
     //    NSDate *then = [NSDate dateWithString:@"1899-01-01 12:00:00 +0000").
     //    [dhWS number:3.1415f row:idx col:1 numberFormat:FMT_GENERAL+idx];
     
     
     for(unsigned short idx = 0; idx < _tableContents.count; ++idx) {
-
-        NSArray *rowArr = [_tableContents objectAtIndex:idx];
-
-        for(unsigned short idx2 = 0; idx2 < rowArr.count; ++idx2) {
-
-            NSString *title = [rowArr objectAtIndex:idx2];
-
-            cell = [dhWS label:title row:idx2 col:idx];
-            if(idx2 & 1) {
-                cell = [dhWS cell:idx2 col:idx];
+        @autoreleasepool{
+            NSArray *rowArr = [_tableContents objectAtIndex:idx];
+            
+            [dhWS width:5000 col:idx format:NULL];
+            
+            for(unsigned short idx2 = 0; idx2 < rowArr.count; ++idx2) {
+                
+                NSString *title = [rowArr objectAtIndex:idx2];
+                
+                cell = [dhWS label:title row:idx2 col:idx];
+                if(idx2 & 1) {
+                    cell = [dhWS cell:idx2 col:idx];
+                }
+                
+                [cell vertAlign:VALIGN_CENTER];
+                [cell horzAlign:HALIGN_CENTER];
+                [cell indent:INDENT_0];
             }
-
-            [cell vertAlign:VALIGN_CENTER];
-            [cell horzAlign:HALIGN_CENTER];
-            [cell indent:INDENT_0];
         }
     }
 
