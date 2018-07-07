@@ -10,5 +10,5 @@
 
 demo[传送门](https://github.com/nenhall/NHXLS)
 
-**![效果图](https://github.com/nenhall/NHXLS/demogift.gif)**
+**![效果图](https://github.com/nenhall/NHXLS/blob/master/demogift.gif)**
 
